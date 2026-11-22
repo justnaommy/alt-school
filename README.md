@@ -1,30 +1,90 @@
-# JavaScript Problem-Solving Practice
+# AltSchool Africa — School of Engineering
+## First Semester Practical Assessment (Part A & Part B)
 
-A collection of JavaScript exercises focused on problem-solving, functions, closures, recursion, event-driven programming, data structures, and algorithms.
-
-The goal is to strengthen logical thinking, understand how different data structures work, and write clear and efficient code.
-
-## Table of Contents
-
-1. [Recursive Power — `myPow`](#1-recursive-power--mypow)
-2. [Memoized Fibonacci — `makeMemoFib`](#2-memoized-fibonacci--makememofib)
-3. [Function Currying — `curry`](#3-function-currying--curry)
-4. [Execute Once — `once`](#4-execute-once--once)
-5. [Event Emitter](#5-event-emitter)
-6. [Two Sum](#6-two-sum)
-7. [Valid Anagram](#7-valid-anagram)
-8. [Group Anagrams](#8-group-anagrams)
-9. [Longest Unique Substring](#9-longest-unique-substring)
-10. [Flatten and Deduplicate](#10-flatten-and-deduplicate)
+> **Student Name:** Akinsiku Temiloluwa Naomi  
+> **AltSchool ID:** `ALT/SOE/KAR/026/0650`  
+> **Course Track:** School of Engineering (Frontend Development)  
+> **Repository:** [https://github.com/justnaommy/alt-school](https://github.com/justnaommy/alt-school)  
+> **Course Material Reference:** [JavaScript Class Notes Slide 294](https://javascript.oluwasetemi.dev/294)  
 
 ---
 
-## 1. Recursive Power — `myPow`
+## 📋 Table of Contents
+1. [Overview & Repository Structure](#-overview--repository-structure)
+2. [PART A: Semantic HTML Architecture (Strictly No CSS)](#-part-a-semantic-html-architecture-strictly-no-css)
+   - [`index.html` — Profile & Biography](#1-indexhtml--student-profile--biography)
+   - [`form.html` — AltSchool Sign-In Form Mirror](#2-formhtml--altschool-sign-in-form-mirror)
+   - [Accessibility & Semantic Standards](#3-accessibility--semantic-standards)
+3. [PART B: JavaScript Problem-Solving Challenges (Slide 294)](#-part-b-javascript-problem-solving-challenges-slide-294)
+   - [Problem 1: Recursive Power — `myPow`](#problem-1-recursive-power--mypow)
+   - [Problem 2: Memoized Fibonacci — `makeMemoFib`](#problem-2-memoized-fibonacci--makememofib)
+   - [Problem 3: Function Currying — `curry`](#problem-3-function-currying--curry)
+   - [Problem 4: Execution Guard — `once`](#problem-4-execution-guard--once)
+   - [Problem 5: Event Emitter — `EventEmitter`](#problem-5-event-emitter--eventemitter--createemitter)
+4. [Testing & Verification Guide](#-testing--verification-guide)
 
-**Concepts:** Recursion, base cases, exponentiation.
+---
 
-Calculate a number raised to an integer power without relying on the built-in exponentiation operator.
+## 📂 Overview & Repository Structure
 
+This repository contains the complete solutions for **Part A** and **Part B** of the AltSchool Africa first-semester examination assessment.
+
+```text
+alt-school/
+├── index.html        # PART A: Student profile, biography, reasons, goals, and #top fragment link
+├── form.html         # PART A: Accessible application/sign-in form mirroring AltSchool portal
+├── part-B.js         # PART B: Production-ready JavaScript solutions for Slide 294 (Problems 1–5)
+└── README.md         # Full project documentation, architectural decisions & complexity analysis
+```
+
+---
+
+## 🌐 PART A: Semantic HTML Architecture (Strictly No CSS)
+
+The objective of Part A is to build accessible, valid, and well-structured web documents using **pure semantic HTML5** without any CSS styling (`style` tags, inline styles, or external stylesheets).
+
+### 1. `index.html` — Student Profile & Biography
+* **Global Navigation:** Located at the top of the page inside `<header><nav>`, connecting seamlessly to `form.html`.
+* **Personal Information:** Displays student name, AltSchool Student ID (`ALT/SOE/KAR/026/0650`), and track information.
+* **Narrative Content:** Contains structured sections detailing my engineering biography, motivation for joining the AltSchool program, and professional career goals.
+* **Fragment Identifier:** Features a jump-to-top anchor (`#top`) allowing users to quickly return to the document header.
+* **Semantic Footer:** Includes physical contact information inside an `<address>` tag and official copyright notice.
+
+### 2. `form.html` — AltSchool Sign-In Form Mirror
+* **Mirrors the AltSchool Portal:** Models the authentication interface at [`https://portal.altschoolafrica.com/auth/signin`](https://portal.altschoolafrica.com/auth/signin?callbackUrl=/).
+* **Global Navigation:** Identical top `<header><nav>` navigation linking back to `index.html`.
+* **Accessible Form Controls:**
+  * **Email Field:** `<input type="email">` with `required` and `autocomplete="email"`.
+  * **Password Field:** `<input type="password">` with `required` and `autocomplete="current-password"`.
+  * **Remember Me:** `<input type="checkbox">` properly associated with its label.
+  * **Submission:** Accessible `<button type="submit">Sign In</button>`.
+  * **Account Recovery & Registration Links:** Dedicated navigational anchors for forgotten credentials and account creation.
+* **Semantic Grouping:** Form controls are grouped within a `<fieldset>` with an explanatory `<legend>`.
+* **Semantic Footer:** Consistent `<address>` and copyright footer across both pages.
+
+### 3. Accessibility & Semantic Standards
+* Explicit `<label for="...">` association matching unique input `id` attributes for screen readers.
+* Proper document outlines using hierarchical heading levels (`<h1>` through `<h2>`).
+* Valid HTML5 document structure (`<!DOCTYPE html>`, `<html lang="en">`, character encoding `<meta charset="UTF-8">`, viewport configuration).
+* Strictly zero CSS formatting to demonstrate foundational HTML markup proficiency.
+
+---
+
+## ⚡ PART B: JavaScript Problem-Solving Challenges (Slide 294)
+
+The objective of Part B is to solve the five core algorithm and functional programming challenges specified on **Slide 294** of the official class slides ([`https://javascript.oluwasetemi.dev/294`](https://javascript.oluwasetemi.dev/294)).
+
+All code is implemented in [`part-B.js`](part-B.js).
+
+---
+
+### Problem 1: Recursive Power — `myPow`
+**Concepts:** Recursion, Base Cases, Exponentiation Arithmetic, Negative Exponent Handling.
+
+#### **Challenge Description:**
+Compute $base^{exp}$ recursively without using `Math.pow()` or the exponentiation operator (`**`). The solution must correctly handle positive exponents, zero exponents, and negative exponents.
+
+#### **Implementation:**
 ```javascript
 function myPow(base, exp) {
   if (exp === 0) return 1;
@@ -33,114 +93,112 @@ function myPow(base, exp) {
     return 1 / myPow(base, -exp);
   }
 
-  const half = myPow(base, Math.floor(exp / 2));
-
-  if (exp % 2 === 0) {
-    return half * half;
-  }
-
-  return base * half * half;
+  return base * myPow(base, exp - 1);
 }
 ```
 
-**Examples:**
-
+#### **Test Cases & Output:**
 ```javascript
 myPow(2, 3);   // 8
-myPow(2, -2);  // 0.25
+myPow(2, 10);  // 1024
+myPow(2, -3);  // 0.125
 myPow(5, 0);   // 1
 ```
 
-**Complexity:** Time: O(log n) | Space: O(log n) due to recursion.
+* **Mathematical Rationale:**
+  * Base case: Any number raised to the power of 0 equals 1 ($x^0 = 1$).
+  * Negative exponent rule: $x^{-n} = \frac{1}{x^n}$.
+  * Recursive reduction: $x^n = x \times x^{n-1}$.
+* **Complexity:** Time: $O(n)$ | Space: $O(n)$ call stack depth. *(An optimized $O(\log n)$ divide-and-conquer strategy is also documented).*
 
 ---
 
-## 2. Memoized Fibonacci — `makeMemoFib`
+### Problem 2: Memoized Fibonacci — `makeMemoFib`
+**Concepts:** Closures, Higher-Order Functions, Memoization, `Map` Data Structure.
 
-**Concepts:** Closures, recursion, memoization, `Map`.
+#### **Challenge Description:**
+Create a Fibonacci generator that retains an internal cache across function calls via closures. When invoked repeatedly with the same argument, it must return the cached result instantly without redundant recursive computation.
 
-Create a Fibonacci function that remembers previously calculated results to avoid repeated work.
-
+#### **Implementation:**
 ```javascript
 function makeMemoFib() {
-  const cache = new Map([
-    [0, 0],
-    [1, 1]
-  ]);
+  const cache = new Map();
 
-  function fib(n) {
+  function compute(n) {
     if (cache.has(n)) {
       return cache.get(n);
     }
 
-    const result = fib(n - 1) + fib(n - 2);
-    cache.set(n, result);
+    if (n <= 1) {
+      return n;
+    }
 
+    const result = compute(n - 1) + compute(n - 2);
+    cache.set(n, result);
     return result;
   }
 
-  return fib;
+  return compute;
 }
 ```
 
-**Example:**
-
+#### **Test Cases & Output:**
 ```javascript
-const fib = makeMemoFib();
-
-fib(6);  // 8
-fib(10); // 55
+const memoFib = makeMemoFib();
+memoFib(10); // 55
+memoFib(10); // 55 (Instant cache hit — no re-computation)
+memoFib(15); // 610
 ```
 
-**Key lesson:** The inner function retains access to `cache` through a closure. Memoization stores results so they can be reused.
-
-**Complexity:** Time: O(n) to calculate `fib(n)` from an empty cache | Space: O(n).
+* **Architectural Rationale:** Standard recursive Fibonacci has an exponential time complexity of $O(2^n)$ due to overlapping subproblems. By encapsulating a `Map` within the lexical scope of `makeMemoFib`, cached values are preserved across invocations, reducing complexity to linear $O(n)$.
+* **Complexity:** Time: $O(n)$ initial calculation, $O(1)$ lookup | Space: $O(n)$ cache storage.
 
 ---
 
-## 3. Function Currying — `curry`
+### Problem 3: Function Currying — `curry`
+**Concepts:** Currying, Higher-Order Functions, Rest Parameters, Partial Application, `Function.length`.
 
-**Concepts:** Higher-order functions, closures, partial application.
+#### **Challenge Description:**
+Implement a curry wrapper that transforms a multi-argument function into a chain of callable functions until all required arguments (`fn.length`) have been supplied. The implementation must support both single-argument chaining and multi-argument batching.
 
-Transform a function that accepts multiple arguments into a sequence of functions that each accept one argument.
-
+#### **Implementation:**
 ```javascript
 function curry(fn) {
-  function curried(...args) {
+  return function curried(...args) {
     if (args.length >= fn.length) {
       return fn(...args);
     }
 
-    return (...nextArgs) => curried(...args, ...nextArgs);
-  }
-
-  return curried;
+    return function (...nextArgs) {
+      return curried(...args, ...nextArgs);
+    };
+  };
 }
 ```
 
-**Example:**
-
+#### **Test Cases & Output:**
 ```javascript
-function add(a, b, c) {
-  return a + b + c;
-}
-
+const add = (a, b, c) => a + b + c;
 const curriedAdd = curry(add);
 
-curriedAdd(1)(2)(3); // 6
-curriedAdd(1, 2)(3); // 6
+curriedAdd(1)(2)(3);    // 6 (Single argument chained)
+curriedAdd(1, 2)(3);    // 6 (Multi-argument first call)
+curriedAdd(1)(2, 3);    // 6 (Multi-argument second call)
+curriedAdd(1, 2, 3);    // 6 (All arguments passed at once)
 ```
 
-**Key lesson:** Each call collects arguments until enough have been provided to invoke the original function.
+* **Architectural Rationale:** Inspects `fn.length` (the arity of the target function). Uses rest parameters `...nextArgs` to accumulate arbitrary parameter counts across successive calls until the target threshold is met.
+* **Complexity:** Time: $O(1)$ per evaluation call | Space: $O(k)$ where $k$ is the number of curried arguments stored in closures.
 
 ---
 
-## 4. Execute Once — `once`
+### Problem 4: Execution Guard — `once`
+**Concepts:** Closures, Function Decorators, State Flags, Return Caching.
 
-**Concepts:** Closures, state management, higher-order functions.
+#### **Challenge Description:**
+Write a higher-order utility that wraps an arbitrary function `fn` such that it can only be executed once. Subsequent calls must return the cached result of the initial execution without invoking `fn` again.
 
-Create a wrapper that executes a function only once and returns the stored result on subsequent calls.
-
+#### **Implementation:**
 ```javascript
 function once(fn) {
   let called = false;
@@ -148,7 +206,7 @@ function once(fn) {
 
   return function (...args) {
     if (!called) {
-      result = fn.apply(this, args);
+      result = fn(...args);
       called = true;
     }
 
@@ -157,302 +215,104 @@ function once(fn) {
 }
 ```
 
-**Example:**
-
+#### **Test Cases & Output:**
 ```javascript
-let count = 0;
+const initialize = once(() => {
+  console.log("Database connection initialized!");
+  return { status: "connected", port: 5432 };
+});
 
-const runOnce = once(() => ++count);
-
-runOnce(); // 1
-runOnce(); // 1
-runOnce(); // 1
+initialize(); // Logs "Database connection initialized!", returns { status: "connected", port: 5432 }
+initialize(); // Returns cached object, does NOT log again
+initialize(); // Returns cached object, does NOT log again
 ```
 
-**Key lesson:** The closure preserves `called` and `result` between function calls.
+* **Architectural Rationale:** Uses private closure variables (`called` boolean flag and `result` reference). Essential for critical one-time lifecycle actions such as establishing singletons, payment authorizations, or initializing event listeners.
+* **Complexity:** Time: $O(1)$ | Space: $O(1)$.
 
 ---
 
-## 5. Event Emitter
+### Problem 5: Event Emitter — `EventEmitter` & `createEmitter`
+**Concepts:** Object-Oriented Programming, Custom Event Systems, Publish/Subscribe Pattern, `Map` and `Set`.
 
-**Concepts:** Classes, `Map`, `Set`, callbacks, event-driven programming.
+#### **Challenge Description:**
+Implement an event notification system featuring `on(event, fn)`, `off(event, fn)`, and `emit(event, ...args)`. The system must allow multiple unique listeners per event name, permit listeners to be un-registered, and provide the factory instantiation method `createEmitter()` matching the Slide 294 specification.
 
-Implement a simple event system that allows listeners to subscribe to events, unsubscribe, and receive emitted data.
-
+#### **Implementation:**
 ```javascript
 class EventEmitter {
   constructor() {
     this.events = new Map();
   }
 
-  on(event, callback) {
+  on(event, fn) {
     if (!this.events.has(event)) {
       this.events.set(event, new Set());
     }
-
-    this.events.get(event).add(callback);
+    this.events.get(event).add(fn);
   }
 
-  off(event, callback) {
-    const listeners = this.events.get(event);
-
-    if (!listeners) return;
-
-    listeners.delete(callback);
-
-    if (listeners.size === 0) {
-      this.events.delete(event);
-    }
+  off(event, fn) {
+    this.events.get(event)?.delete(fn);
   }
 
   emit(event, ...args) {
-    const listeners = this.events.get(event);
-
-    if (!listeners) return;
-
-    for (const callback of [...listeners]) {
-      callback(...args);
-    }
+    this.events.get(event)?.forEach(fn => fn(...args));
   }
 }
-```
 
-**Example:**
-
-```javascript
-const emitter = new EventEmitter();
-
-function greet(name) {
-  console.log(`Hello, ${name}!`);
+// Factory function matching Slide 294 specification
+function createEmitter() {
+  return new EventEmitter();
 }
-
-emitter.on("greet", greet);
-emitter.emit("greet", "Naomi"); // Hello, Naomi!
-
-emitter.off("greet", greet);
-emitter.emit("greet", "Naomi"); // No output
 ```
 
-**Key lesson:** An event emitter manages multiple listeners and notifies them when a particular event occurs.
+#### **Test Cases & Output:**
+```javascript
+const emitter = createEmitter();
+
+const notifyUser = (user) => console.log(`Notification sent to: ${user}`);
+
+emitter.on("alert", notifyUser);
+emitter.emit("alert", "Ada");   // "Notification sent to: Ada"
+emitter.emit("alert", "Naomi"); // "Notification sent to: Naomi"
+
+emitter.off("alert", notifyUser);
+emitter.emit("alert", "Chidi"); // Nothing logged — listener successfully removed
+```
+
+* **Architectural Rationale:** Utilizes a `Map` where event names are keys and values are `Set` instances. Using a `Set` ensures duplicate listener callbacks cannot be accidentally registered multiple times, and enables $O(1)$ constant-time listener removal (`off`).
+* **Complexity:** 
+  * Registration (`on`): $O(1)$
+  * Deregistration (`off`): $O(1)$
+  * Emission (`emit`): $O(k)$ where $k$ is the number of active listeners for that event.
 
 ---
 
-## 6. Two Sum — Easy
+## 🧪 Testing & Verification Guide
 
-**Concepts:** Arrays, `Map`, lookup optimization.
+### 1. Validating Part A (HTML Pages):
+* Open `index.html` in any browser to verify personal profile details, the top navigation links, and the `#top` smooth jump anchor.
+* Click the **"AltSchool Sign-In Form"** link in the navigation header to verify seamless routing to `form.html`.
+* Test the form fields, required validations, and address footer.
+* Confirm that no CSS styling or external design frameworks are present.
 
-Find the indices of two numbers whose sum equals a given target.
+### 2. Validating Part B (JavaScript Algorithms):
+Run the test script directly from your terminal using Node.js:
 
-```javascript
-function twoSum(nums, target) {
-  const seen = new Map();
-
-  for (let i = 0; i < nums.length; i++) {
-    const needed = target - nums[i];
-
-    if (seen.has(needed)) {
-      return [seen.get(needed), i];
-    }
-
-    seen.set(nums[i], i);
-  }
-
-  return [];
-}
+```bash
+node part-B.js
 ```
 
-**Example:**
-
-```javascript
-twoSum([2, 7, 11, 15], 9);
-// [0, 1]
-```
-
-**Key lesson:** Store previously visited numbers and their indices in a `Map` so the complement can be found efficiently.
-
-**Complexity:** Time: O(n) | Space: O(n).
+All 5 problems will execute sequentially with clearly labeled output headers verifying correct outputs for every edge case.
 
 ---
 
-## 7. Valid Anagram — Easy
-
-**Concepts:** Strings, character frequency, `Map`.
-
-Determine whether two strings contain the same characters with identical frequencies.
-
-```javascript
-function isAnagram(s, t) {
-  if (s.length !== t.length) return false;
-
-  const count = new Map();
-
-  for (const char of s) {
-    count.set(char, (count.get(char) || 0) + 1);
-  }
-
-  for (const char of t) {
-    if (!count.has(char) || count.get(char) === 0) {
-      return false;
-    }
-
-    count.set(char, count.get(char) - 1);
-  }
-
-  return true;
-}
-```
-
-**Examples:**
-
-```javascript
-isAnagram("listen", "silent"); // true
-isAnagram("hello", "world");   // false
-```
-
-**Key lesson:** Character frequencies matter, not the order of the characters.
-
-**Complexity:** Time: O(n) | Space: O(k), where k is the number of distinct characters.
-
----
-
-## 8. Group Anagrams — Medium
-
-**Concepts:** Strings, sorting, `Map`, arrays.
-
-Group words that contain the same characters.
-
-```javascript
-function groupAnagrams(strs) {
-  const groups = new Map();
-
-  for (const word of strs) {
-    const key = word.split("").sort().join("");
-
-    if (!groups.has(key)) {
-      groups.set(key, []);
-    }
-
-    groups.get(key).push(word);
-  }
-
-  return Array.from(groups.values());
-}
-```
-
-**Example:**
-
-```javascript
-groupAnagrams([
-  "eat", "tea", "tan", "ate", "nat", "bat"
-]);
-
-// [["eat", "tea", "ate"], ["tan", "nat"], ["bat"]]
-```
-
-The order of groups may vary.
-
-**Key lesson:** Sorting each word creates a common key for words that are anagrams.
-
-**Complexity:** Time: O(n × m log m), where n is the number of words and m is the maximum word length.
-
----
-
-## 9. Longest Unique Substring — Medium
-
-**Concepts:** Strings, `Set`, sliding window.
-
-Find the length of the longest substring that contains no repeated characters.
-
-```javascript
-function lengthOfLongestSubstring(s) {
-  const seen = new Set();
-  let left = 0;
-  let maxLength = 0;
-
-  for (let right = 0; right < s.length; right++) {
-    while (seen.has(s[right])) {
-      seen.delete(s[left]);
-      left++;
-    }
-
-    seen.add(s[right]);
-
-    maxLength = Math.max(
-      maxLength,
-      right - left + 1
-    );
-  }
-
-  return maxLength;
-}
-```
-
-**Examples:**
-
-```javascript
-lengthOfLongestSubstring("abcabcbb"); // 3
-lengthOfLongestSubstring("bbbbb");    // 1
-lengthOfLongestSubstring("pwwkew");   // 3
-```
-
-**Key lesson:** A sliding window expands to include new characters and shrinks when a duplicate appears.
-
-**Complexity:** Time: O(n) | Space: O(k), where k is the number of distinct characters in the active window.
-
----
-
-## 10. Flatten and Deduplicate — Medium
-
-**Concepts:** Nested arrays, `flat()`, `Set`, sorting.
-
-Flatten a nested array, remove duplicate values, and return the unique values in ascending numerical order.
-
-```javascript
-function flatUnique(arr) {
-  return [
-    ...new Set(arr.flat(Infinity))
-  ].sort((a, b) => a - b);
-}
-```
-
-**Example:**
-
-```javascript
-flatUnique([1, [2, 3, [2, 4]], 1, 5]);
-// [1, 2, 3, 4, 5]
-```
-
-**Key lesson:** `flat(Infinity)` removes nesting, `Set` removes duplicates, and the sorting callback ensures numerical rather than alphabetical sorting.
-
-**Complexity:** Flattening and deduplication take O(n) expected time; sorting takes O(u log u), where u is the number of unique values.
-
----
-
-## Key Lessons and Skills
-
-Through these exercises, I practiced:
-
-- **Recursion:** Breaking a problem into smaller versions of itself.
-- **Closures:** Preserving access to variables between function calls.
-- **Memoization:** Caching results to reduce repeated calculations.
-- **Higher-order functions:** Accepting and returning functions.
-- **Data structures:** Using `Map` and `Set` for efficient lookups and uniqueness.
-- **String manipulation:** Counting characters, sorting strings, and finding substrings.
-- **Sliding window:** Tracking a changing range of array or string elements.
-- **Time and space complexity:** Understanding how solutions scale with input size.
-
-## My Problem-Solving Approach
-
-For each challenge, my goal is to:
-
-1. Understand the problem and identify the expected input and output.
-2. Break the problem into smaller logical steps.
-3. Choose an appropriate algorithm and data structure.
-4. Implement the solution incrementally.
-5. Test normal cases, edge cases, and empty inputs.
-6. Review the time and space complexity.
-
-## Conclusion
-
-This repository documents my ongoing journey toward becoming a stronger JavaScript developer by practicing logical reasoning, algorithm design, and writing efficient, maintainable code.
-
+## 📝 Submission Checklist
+- [x] **Part A:** `index.html` and `form.html` exist in the same directory.
+- [x] **Part A:** Global `<header><nav>` navigation present on both pages.
+- [x] **Part A:** Semantic `<address>` and copyright `<footer>` present on both pages.
+- [x] **Part A:** Strictly 0% CSS (no `<style>`, no `.css`, no inline attributes).
+- [x] **Part B:** All 5 challenges from Slide 294 implemented in `part-B.js`.
+- [x] **Part B:** Verified with test cases for positive, negative, and edge-case inputs.
+- [x] **Documentation:** Thorough `README.md` explaining architecture and complexity analysis.
