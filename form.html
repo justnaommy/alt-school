@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AltSchool Africa — Sign In Form</title>
+</head>
+<body>
+
+    <!-- Global Navigation (Identical to index.html) -->
+    <header>
+        <nav aria-label="Global Navigation">
+            <ul>
+                <li><a href="index.html">Profile &amp; Biography</a></li>
+                <li><a href="form.html">AltSchool Sign-In Form</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <hr>
+
+    <main>
+        <h1>AltSchool Africa Application Portal</h1>
+        <p>Sign in to your student account to continue to your dashboard.</p>
+
+        <!-- Semantic & Accessible Form -->
+        <form action="/auth/signin" method="POST">
+            <fieldset>
+                <legend>Student Account Sign-In</legend>
+
+                <p>
+                    <label for="user-email">Email Address:</label><br>
+                    <input
+                        type="email"
+                        id="user-email"
+                        name="email"
+                        placeholder="e.g. student@altschoolafrica.com"
+                        required
+                        autocomplete="email"
+                    >
+                </p>
+
+                <p>
+                    <label for="user-password">Password:</label><br>
+                    <input
+                        type="password"
+                        id="user-password"
+                        name="password"
+                        placeholder="Enter your password"
+                        required
+                        autocomplete="current-password"
+                    >
+                </p>
+
+                <p>
+                    <input type="checkbox" id="remember-me" name="rememberMe" value="true">
+                    <label for="remember-me">Remember me on this device</label>
+                </p>
+
+                <p>
+                    <button type="submit">Sign In</button>
+                </p>
+
+                <p>
+                    <a href="#">Forgot password?</a> |
+                    <a href="https://portal.altschoolafrica.com/auth/create-account">Don't have an account? Sign up</a>
+                </p>
+            </fieldset>
+        </form>
+    </main>
+
+    <hr>
+
+    <!-- Semantic Footer with Address and Copyright -->
+    <footer>
+        <address>
+            AltSchool Africa &bull; Lagos, Nigeria &bull; Email: <a href="mailto:support@altschoolafrica.com">support@altschoolafrica.com</a>
+        </address>
+        <p>&copy; 2026 Akinsiku Temiloluwa Naomi. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
